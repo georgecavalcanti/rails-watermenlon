@@ -1,0 +1,2 @@
+class SyncJson < ApplicationRecord
+end
