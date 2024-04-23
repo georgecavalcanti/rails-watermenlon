@@ -1,6 +1,6 @@
 class CreateAssets < ActiveRecord::Migration[7.1]
   def change
-    create_table :assets do |t|
+    create_table :assets, id: :uuid do |t|
       t.string :name
       t.bigint :external_created_at
       t.bigint :external_update_at

@@ -1,6 +1,6 @@
 class CreatePeople < ActiveRecord::Migration[7.1]
   def change
-    create_table :people do |t|
+    create_table :people, id: :uuid do |t|
       t.string :name
       t.bigint :external_created_at
       t.bigint :external_update_at

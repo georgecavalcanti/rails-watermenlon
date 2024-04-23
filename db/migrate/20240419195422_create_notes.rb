@@ -1,8 +1,8 @@
 class CreateNotes < ActiveRecord::Migration[7.1]
   def change
-    create_table :notes do |t|
-      t.references :schedule, foreign_key: true
-      t.references :person, foreign_key: true
+    create_table :notes, id: :uuid do |t|
+      t.references :schedule, index: true, foreign_key: true, type: :uuid
+      t.references :person, index: true, foreign_key: true, type: :uuid
       t.string :name
       t.text :content
       t.bigint :external_created_at

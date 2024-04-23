@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :sync_push do
+  factory :sync_json do
     
   end
 end

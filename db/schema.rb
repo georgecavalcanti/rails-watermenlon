@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_121442) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "assets", force: :cascade do |t|
+  create_table "assets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.bigint "external_created_at"
     t.bigint "external_update_at"
@@ -24,9 +24,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_121442) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "notes", force: :cascade do |t|
-    t.bigint "schedule_id"
-    t.bigint "person_id"
+  create_table "notes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "schedule_id"
+    t.uuid "person_id"
     t.string "name"
     t.text "content"
     t.bigint "external_created_at"
@@ -39,7 +39,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_121442) do
     t.index ["schedule_id"], name: "index_notes_on_schedule_id"
   end
 
-  create_table "people", force: :cascade do |t|
+  create_table "people", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.bigint "external_created_at"
     t.bigint "external_update_at"
@@ -49,8 +49,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_121442) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "schedules", force: :cascade do |t|
-    t.bigint "person_id"
+  create_table "schedules", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "person_id"
     t.string "execution_date"
     t.string "name"
     t.bigint "external_created_at"
@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_121442) do
     t.index ["person_id"], name: "index_schedules_on_person_id"
   end
 
-  create_table "sync_jsons", force: :cascade do |t|
+  create_table "sync_jsons", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "last_pulled_at"
     t.json "changes", default: {}
     t.datetime "created_at", null: false
