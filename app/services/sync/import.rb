@@ -1,9 +1,7 @@
 class Sync::Import
   prepend SimpleCommand
 
-  def initialize(
-    values, columns, model, callbacks_model = []
-  )
+  def initialize(values, columns, model, callbacks_model = [])
     @values_for_create = values[:created]
     @values_for_update = values[:updated]
     @values_for_delete = values[:deleted]
@@ -36,7 +34,6 @@ class Sync::Import
 
   def import_delete
     ImportDeleteJob.set(wait: 5.seconds).perform_later(@model, @values_for_delete)
-    # @model.constantize.where(id: @values_for_delete).destroy_all
   rescue => e
     errors.add(:error_import_delete, e.to_s)
   end
@@ -63,9 +60,5 @@ class Sync::Import
       },
       batch_size: 10
     )
-
-    values_format = []
-
-    values_format
   end
 end

@@ -1,4 +1,4 @@
-require 'simple_command/errors'
+require "#{Rails.root}/app/modules/simple_command/errors.rb"
 
 module SimpleCommand
   attr_reader :result

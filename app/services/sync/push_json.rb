@@ -7,8 +7,8 @@ class Sync::PushJson
   end
 
   def call
-    SyncJson.create(
-      changes: @changes,
+    ::SyncJson.create(
+      request_changes: @changes,
       last_pulled_at: @last_pulled_at
     )
   

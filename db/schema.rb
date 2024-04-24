@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_121442) do
   create_table "assets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.bigint "external_created_at"
-    t.bigint "external_update_at"
+    t.bigint "external_updated_at"
     t.bigint "last_modified_at"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_121442) do
     t.string "name"
     t.text "content"
     t.bigint "external_created_at"
-    t.bigint "external_update_at"
+    t.bigint "external_updated_at"
     t.bigint "last_modified_at"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_121442) do
   create_table "people", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.bigint "external_created_at"
-    t.bigint "external_update_at"
+    t.bigint "external_updated_at"
     t.bigint "last_modified_at"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_121442) do
     t.string "execution_date"
     t.string "name"
     t.bigint "external_created_at"
-    t.bigint "external_update_at"
+    t.bigint "external_updated_at"
     t.bigint "last_modified_at"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
@@ -64,7 +64,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_121442) do
 
   create_table "sync_jsons", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "last_pulled_at"
-    t.json "changes", default: {}
+    t.json "request_changes", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

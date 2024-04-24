@@ -51,9 +51,9 @@ RSpec.describe SyncController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
-    # it 'is not valid without changes objects and lastPulledAt' do
-    #   post '/api/v1/sync_push', params: {}
-    #   expect(response).to have_http_status(:internal_server_error)
-    # end
+    it 'is not valid without changes objects and lastPulledAt' do
+      post '/sync_push', params: {}
+      expect(response).to have_http_status(:internal_server_error)
+    end
   end
 end
